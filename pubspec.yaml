@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
   cloud_firestore: ^5.5.1
+  qr_flutter: ^4.1.0
 
 icons_launcher:
   image_path: "assets/images/icon.png"

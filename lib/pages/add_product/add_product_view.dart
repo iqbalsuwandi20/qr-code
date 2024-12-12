@@ -52,7 +52,7 @@ class AddProductView extends StatelessWidget {
             autocorrect: false,
             textInputAction: TextInputAction.done,
             keyboardType: TextInputType.number,
-            maxLength: 10,
+            maxLength: 5,
             decoration: InputDecoration(
               labelText: "Quantity",
               icon: Icon(Icons.production_quantity_limits_outlined),
@@ -70,11 +70,16 @@ class AddProductView extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              context.read<ProductBloc>().add(ProductEventAddProduct(
-                    code: codeController.text,
-                    name: nameController.text,
-                    qty: int.tryParse(quantityController.text) ?? 0,
-                  ));
+              if (codeController.text.length == 5) {
+                context.read<ProductBloc>().add(ProductEventAddProduct(
+                      code: codeController.text,
+                      name: nameController.text,
+                      qty: int.tryParse(quantityController.text) ?? 0,
+                    ));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Product Code harus wajib 5 karakter')));
+              }
             },
             child: BlocConsumer<ProductBloc, ProductState>(
               listener: (context, state) {
