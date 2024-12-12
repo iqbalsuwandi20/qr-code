@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
-import 'logic/auth/auth_bloc.dart';
+import 'logic/bloc.dart';
 import 'routes/router.dart';
 
 void main() async {
@@ -16,8 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthBloc>(
-      create: (context) => AuthBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(),
+        ),
+      ],
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../logic/auth/auth_bloc.dart';
+import '../../logic/bloc.dart';
 import '../../routes/router.dart';
 
 class LoginView extends StatelessWidget {
