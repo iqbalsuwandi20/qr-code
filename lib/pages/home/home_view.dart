@@ -40,7 +40,26 @@ class HomeView extends StatelessWidget {
             case 2:
               title = 'QR Code';
               icon = Icons.qr_code_2_outlined;
-              onTap = () {};
+              onTap = () {
+                context.read<ProductBloc>().add(ProductEventBarcodeScanner());
+
+                context.read<ProductBloc>().stream.listen((state) {
+                  if (state is ProductStateCompleteBarcode) {
+                    context.goNamed(
+                      RouterName.detailProduct,
+                      pathParameters: {
+                        'detailProduct': state.product.productId!
+                      },
+                      extra: state.product,
+                    );
+                  } else if (state is ProductStateError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(state.message)),
+                    );
+                  }
+                });
+              };
+
               break;
             case 3:
               title = 'Catalog';

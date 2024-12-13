@@ -27,3 +27,5 @@ class ProductEventDeleteProduct extends ProductEvent {
 }
 
 class ProductEventExportToPdf extends ProductEvent {}
+
+class ProductEventBarcodeScanner extends ProductEvent {}

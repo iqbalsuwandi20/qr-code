@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -262,6 +263,42 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductStateCompleteExport());
       } on FirebaseException catch (e) {
         emit(ProductStateError(e.message.toString()));
+      } catch (e) {
+        emit(ProductStateError(e.toString()));
+      }
+    });
+
+    on<ProductEventBarcodeScanner>((event, emit) async {
+      try {
+        emit(ProductStateLoadingBarcode());
+
+        // Scan barcode
+        String barcode = await FlutterBarcodeScanner.scanBarcode(
+          '#000000',
+          'CANCEL',
+          true,
+          ScanMode.BARCODE,
+        );
+
+        if (barcode == '-1') return; // Handle cancel case
+
+        // Fetch product detail by code
+        var snapshot = await firestore
+            .collection('products')
+            .where('code', isEqualTo: barcode)
+            .withConverter<Product>(
+              fromFirestore: (snapshot, _) =>
+                  Product.fromJson(snapshot.data()!),
+              toFirestore: (product, _) => product.toJson(),
+            )
+            .get();
+
+        if (snapshot.docs.isNotEmpty) {
+          var product = snapshot.docs.first.data();
+          emit(ProductStateCompleteBarcode(product));
+        } else {
+          emit(ProductStateError('Product not found'));
+        }
       } catch (e) {
         emit(ProductStateError(e.toString()));
       }
