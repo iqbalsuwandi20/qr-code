@@ -45,7 +45,9 @@ class HomeView extends StatelessWidget {
             case 3:
               title = 'Catalog';
               icon = Icons.document_scanner_outlined;
-              onTap = () {};
+              onTap = () {
+                context.read<ProductBloc>().add(ProductEventExportToPdf());
+              };
               break;
           }
 
@@ -58,7 +60,33 @@ class HomeView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(icon),
+                  (index == 3)
+                      ? BlocConsumer<ProductBloc, ProductState>(
+                          listener: (context, state) {
+                            // TODO: implement listener
+                          },
+                          builder: (context, state) {
+                            if (state is ProductStateLoadingExport) {
+                              return CircularProgressIndicator();
+                            }
+                            return SizedBox(
+                              height: 50,
+                              width: 50,
+                              child: Icon(
+                                icon,
+                                size: 50,
+                              ),
+                            );
+                          },
+                        )
+                      : SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Icon(
+                            icon,
+                            size: 50,
+                          ),
+                        ),
                   SizedBox(height: 10),
                   Text(title),
                 ],
@@ -68,7 +96,11 @@ class HomeView extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<AuthBloc>().add(AuthEventLogout()),
+        onPressed: () {
+          context.read<AuthBloc>().add(AuthEventLogout());
+
+          context.goNamed(RouterName.login);
+        },
         child: Icon(Icons.logout_outlined),
       ),
     );
