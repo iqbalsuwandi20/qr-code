@@ -6,6 +6,7 @@ import '../pages/add_product/add_product_view.dart';
 import '../pages/detail_product/detail_product_view.dart';
 import '../pages/error/error_view.dart';
 import '../pages/home/home_view.dart';
+import '../pages/introduction/introduction_view.dart';
 import '../pages/login/login_view.dart';
 import '../pages/products/products_view.dart';
 
@@ -18,10 +19,15 @@ final router = GoRouter(
     FirebaseAuth auth = FirebaseAuth.instance;
 
     if (auth.currentUser == null) {
-      return "/login";
+      if (state.uri.path != '/splash' && state.uri.path != '/login') {
+        return '/splash';
+      }
     } else {
-      return null;
+      if (state.uri.path == '/login' || state.uri.path == '/splash') {
+        return '/';
+      }
     }
+    return null;
   },
   errorBuilder: (context, state) => const ErrorView(),
   routes: [
@@ -56,6 +62,11 @@ final router = GoRouter(
       path: '/login',
       name: RouterName.login,
       builder: (context, state) => LoginView(),
+    ),
+    GoRoute(
+      path: '/splash',
+      name: RouterName.splash,
+      builder: (context, state) => IntroductionView(),
     ),
   ],
 );

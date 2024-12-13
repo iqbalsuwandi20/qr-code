@@ -7,4 +7,5 @@ abstract class RouterName {
   static const products = 'products';
   static const detailProduct = 'detailProduct';
   static const addProduct = 'addProduct';
+  static const splash = 'splash';
 }

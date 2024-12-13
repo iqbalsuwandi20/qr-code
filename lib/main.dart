@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ProductBloc(),
         ),
+        BlocProvider(
+          create: (context) => SplashBloc(),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: router,

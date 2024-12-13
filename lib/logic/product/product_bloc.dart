@@ -272,7 +272,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       try {
         emit(ProductStateLoadingBarcode());
 
-        // Scan barcode
         String barcode = await FlutterBarcodeScanner.scanBarcode(
           '#000000',
           'CANCEL',
@@ -280,9 +279,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           ScanMode.BARCODE,
         );
 
-        if (barcode == '-1') return; // Handle cancel case
+        if (barcode == '-1') return;
 
-        // Fetch product detail by code
         var snapshot = await firestore
             .collection('products')
             .where('code', isEqualTo: barcode)
