@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
+import '../models/product.dart';
 import '../pages/add_product/add_product_view.dart';
 import '../pages/detail_product/detail_product_view.dart';
 import '../pages/error/error_view.dart';
@@ -35,9 +36,12 @@ final router = GoRouter(
           builder: (context, state) => const ProductsView(),
           routes: [
             GoRoute(
-              path: 'detailProduct',
+              path: ':detailProduct',
               name: RouterName.detailProduct,
-              builder: (context, state) => const DetailProductView(),
+              builder: (context, state) => DetailProductView(
+                state.pathParameters['detailProduct'].toString(),
+                state.extra as Product,
+              ),
             ),
           ],
         ),

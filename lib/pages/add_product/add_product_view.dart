@@ -87,15 +87,16 @@ class AddProductView extends StatelessWidget {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(state.message)));
                 }
-                if (state is ProductStateComplete) {
+                if (state is ProductStateCompleteAdd) {
                   context.pop();
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Sukes Menambah Product")));
                 }
               },
               builder: (context, state) {
-                return Text(
-                    state is ProductStateLoading ? 'LOADING..' : 'ADD PRODUCT');
+                return Text(state is ProductStateLoadingAdd
+                    ? 'LOADING..'
+                    : 'ADD PRODUCT');
               },
             ),
           ),

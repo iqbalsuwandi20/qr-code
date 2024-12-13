@@ -4,6 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../logic/bloc.dart';
 import '../../models/product.dart';
+import '../../routes/router.dart';
 
 class ProductsView extends StatelessWidget {
   const ProductsView({super.key});
@@ -60,7 +61,15 @@ class ProductsView extends StatelessWidget {
                 ),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
-                  onTap: () {},
+                  onTap: () {
+                    context.goNamed(
+                      RouterName.detailProduct,
+                      pathParameters: {
+                        'detailProduct': product.productId!,
+                      },
+                      extra: product,
+                    );
+                  },
                   child: Container(
                     height: 100,
                     padding: EdgeInsets.all(10),
