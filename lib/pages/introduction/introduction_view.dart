@@ -59,7 +59,7 @@ class IntroductionView extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   Text(
-                    'Welcome to Our App',
+                    'Welcome to QR Apps',
                     style: GoogleFonts.poppins(
                       fontSize: MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,
