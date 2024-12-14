@@ -8,7 +8,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     on<SplashEventStart>((event, emit) async {
       try {
         emit(SplashStateLoading());
-        await Future.delayed(const Duration(seconds: 5));
+        await Future.delayed(const Duration(seconds: 7));
         emit(SplashStateComplete());
       } catch (e) {
         emit(SplashStateError(e.toString()));
