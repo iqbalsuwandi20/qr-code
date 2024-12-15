@@ -70,7 +70,14 @@ class AddProductView extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              if (codeController.text.length == 5) {
+              if (codeController.text.isEmpty &&
+                  nameController.text.isEmpty &&
+                  quantityController.text.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Data tidak boleh kosong')));
+              }
+              if (codeController.text.length == 5 &&
+                  quantityController.text.length == 5) {
                 context.read<ProductBloc>().add(ProductEventAddProduct(
                       code: codeController.text,
                       name: nameController.text,
@@ -78,7 +85,8 @@ class AddProductView extends StatelessWidget {
                     ));
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Product Code harus wajib 5 karakter')));
+                    content:
+                        Text('Product Code dan Quantity harus wajib 5 angka')));
               }
             },
             child: BlocConsumer<ProductBloc, ProductState>(

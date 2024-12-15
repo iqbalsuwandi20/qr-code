@@ -92,6 +92,11 @@ class DetailProductView extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+                if (nameController.text.isEmpty &&
+                    quantityController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Data tidak boleh kosong')));
+                }
                 if (quantityController.text.length == 5) {
                   context.read<ProductBloc>().add(ProductEventEditProduct(
                         productId: product.productId!,

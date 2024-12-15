@@ -54,8 +54,11 @@ class LoginView extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Email",
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
-                      prefixIcon: const Icon(Icons.email_outlined,
-                          color: Colors.white70),
+                      prefixIcon: const AnimatedSwitcher(
+                        duration: Duration(milliseconds: 300),
+                        child:
+                            Icon(Icons.email_outlined, color: Colors.white70),
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
@@ -74,8 +77,10 @@ class LoginView extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Password",
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
-                      prefixIcon: const Icon(Icons.lock_outlined,
-                          color: Colors.white70),
+                      prefixIcon: const AnimatedSwitcher(
+                        duration: Duration(milliseconds: 300),
+                        child: Icon(Icons.lock_outlined, color: Colors.white70),
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
