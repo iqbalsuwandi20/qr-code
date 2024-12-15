@@ -37,9 +37,13 @@ class DetailProductView extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () => context.pop(),
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.white70,
+          icon: const AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              key: ValueKey<int>(1),
+              color: Colors.white70,
+            ),
           ),
         ),
       ),
