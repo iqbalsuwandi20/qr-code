@@ -56,8 +56,11 @@ class LoginView extends StatelessWidget {
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
                       prefixIcon: const AnimatedSwitcher(
                         duration: Duration(milliseconds: 300),
-                        child:
-                            Icon(Icons.email_outlined, color: Colors.white70),
+                        child: Icon(
+                          Icons.email_outlined,
+                          color: Colors.white70,
+                          key: ValueKey<int>(1),
+                        ),
                       ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
@@ -79,7 +82,11 @@ class LoginView extends StatelessWidget {
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
                       prefixIcon: const AnimatedSwitcher(
                         duration: Duration(milliseconds: 300),
-                        child: Icon(Icons.lock_outlined, color: Colors.white70),
+                        child: Icon(
+                          Icons.lock_outlined,
+                          color: Colors.white70,
+                          key: ValueKey<int>(1),
+                        ),
                       ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
@@ -127,7 +134,7 @@ class LoginView extends StatelessWidget {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.05,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.white70,
                             ),
                           );
                         }
@@ -136,7 +143,7 @@ class LoginView extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             fontSize: MediaQuery.of(context).size.width * 0.05,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.white70,
                           ),
                         );
                       },

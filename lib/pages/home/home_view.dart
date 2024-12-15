@@ -128,14 +128,14 @@ class HomeView extends StatelessWidget {
                                       icon,
                                       size: MediaQuery.of(context).size.width *
                                           0.2,
-                                      color: Colors.white,
+                                      color: Colors.white70,
                                     );
                                   },
                                 )
                               : Icon(
                                   icon,
                                   size: MediaQuery.of(context).size.width * 0.2,
-                                  color: Colors.white,
+                                  color: Colors.white70,
                                 ),
                           SizedBox(
                               height:
@@ -170,6 +170,7 @@ class HomeView extends StatelessWidget {
           duration: Duration(milliseconds: 300),
           child: Icon(
             Icons.logout_outlined,
+            key: ValueKey<int>(1),
             color: Colors.white70,
           ),
         ),
