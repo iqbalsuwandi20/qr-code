@@ -184,17 +184,25 @@ class ProductsView extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     height: MediaQuery.of(context).size.width *
                                         0.15,
                                     width: MediaQuery.of(context).size.width *
                                         0.15,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white70,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 5,
+                                      ),
+                                    ),
                                     child: QrImageView(
                                       data: product.code!,
                                       size: MediaQuery.of(context).size.width *
                                           0.15,
                                       version: QrVersions.auto,
-                                      backgroundColor: Colors.white,
+                                      backgroundColor: Colors.white70,
                                     ),
                                   )
                                 ],

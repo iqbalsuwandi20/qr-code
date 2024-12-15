@@ -80,8 +80,14 @@ class AddProductView extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Product Code",
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
-                      prefixIcon: const Icon(Icons.vpn_key_outlined,
-                          color: Colors.white70),
+                      prefixIcon: const AnimatedSwitcher(
+                        duration: Duration(milliseconds: 300),
+                        child: Icon(
+                          Icons.vpn_key_outlined,
+                          color: Colors.white70,
+                          key: ValueKey<int>(1),
+                        ),
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
@@ -100,8 +106,14 @@ class AddProductView extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Product Name",
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
-                      prefixIcon: const Icon(Icons.label_outline,
-                          color: Colors.white70),
+                      prefixIcon: const AnimatedSwitcher(
+                        duration: Duration(milliseconds: 300),
+                        child: Icon(
+                          Icons.label_outline,
+                          color: Colors.white70,
+                          key: ValueKey<int>(1),
+                        ),
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
@@ -121,9 +133,14 @@ class AddProductView extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Quantity",
                       labelStyle: GoogleFonts.poppins(color: Colors.white70),
-                      prefixIcon: const Icon(
+                      prefixIcon: const AnimatedSwitcher(
+                        duration: Duration(milliseconds: 300),
+                        child: Icon(
                           Icons.format_list_numbered_outlined,
-                          color: Colors.white70),
+                          color: Colors.white70,
+                          key: ValueKey<int>(1),
+                        ),
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
