@@ -110,6 +110,13 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
+                      if (emailController.text.isEmpty &&
+                          passwordController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Data cannot be empty')),
+                        );
+                        return;
+                      }
                       context.read<AuthBloc>().add(AuthEventLogin(
                             emailController.text,
                             passwordController.text,

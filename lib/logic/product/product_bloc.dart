@@ -169,80 +169,76 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               );
 
               return [
-                pw.Column(
+                pw.Center(
+                  child: pw.Text('CATALOG PRODUCTS', style: myStyle),
+                ),
+                pw.SizedBox(height: 20),
+                pw.Table(
+                  border: pw.TableBorder.all(
+                    color: PdfColor.fromHex('#000000'),
+                    width: 3,
+                  ),
                   children: [
-                    pw.Center(
-                      child: pw.Text('CATALOG PRODUCTS', style: myStyle),
-                    ),
-                    pw.SizedBox(height: 20),
-                    pw.Table(
-                      border: pw.TableBorder.all(
-                        color: PdfColor.fromHex('#000000'),
-                        width: 3,
-                      ),
+                    pw.TableRow(
                       children: [
-                        pw.TableRow(
-                          children: [
-                            pw.Padding(
-                              padding: const pw.EdgeInsets.all(20),
-                              child: pw.Text(
-                                'No.',
-                                textAlign: pw.TextAlign.center,
-                                style: pw.TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: pw.FontWeight.bold,
-                                ),
-                              ),
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(20),
+                          child: pw.Text(
+                            'No.',
+                            textAlign: pw.TextAlign.center,
+                            style: pw.TextStyle(
+                              fontSize: 10,
+                              fontWeight: pw.FontWeight.bold,
                             ),
-                            pw.Padding(
-                              padding: const pw.EdgeInsets.all(20),
-                              child: pw.Text(
-                                'Product Code',
-                                textAlign: pw.TextAlign.center,
-                                style: pw.TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: pw.FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            pw.Padding(
-                              padding: const pw.EdgeInsets.all(20),
-                              child: pw.Text(
-                                'Product Name',
-                                textAlign: pw.TextAlign.center,
-                                style: pw.TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: pw.FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            pw.Padding(
-                              padding: const pw.EdgeInsets.all(20),
-                              child: pw.Text(
-                                'Quantity',
-                                textAlign: pw.TextAlign.center,
-                                style: pw.TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: pw.FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            pw.Padding(
-                              padding: const pw.EdgeInsets.all(20),
-                              child: pw.Text(
-                                'Barcode',
-                                textAlign: pw.TextAlign.center,
-                                style: pw.TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: pw.FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        ...allData,
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(20),
+                          child: pw.Text(
+                            'Product Code',
+                            textAlign: pw.TextAlign.center,
+                            style: pw.TextStyle(
+                              fontSize: 10,
+                              fontWeight: pw.FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(20),
+                          child: pw.Text(
+                            'Product Name',
+                            textAlign: pw.TextAlign.center,
+                            style: pw.TextStyle(
+                              fontSize: 10,
+                              fontWeight: pw.FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(20),
+                          child: pw.Text(
+                            'Quantity',
+                            textAlign: pw.TextAlign.center,
+                            style: pw.TextStyle(
+                              fontSize: 10,
+                              fontWeight: pw.FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(20),
+                          child: pw.Text(
+                            'Barcode',
+                            textAlign: pw.TextAlign.center,
+                            style: pw.TextStyle(
+                              fontSize: 10,
+                              fontWeight: pw.FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
+                    ...allData,
                   ],
                 ),
               ];

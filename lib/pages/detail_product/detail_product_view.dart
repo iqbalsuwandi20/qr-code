@@ -191,7 +191,6 @@ class DetailProductView extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Data cannot be empty')),
                       );
-                      return;
                     }
                     if (quantityController.text.length == 5) {
                       context.read<ProductBloc>().add(ProductEventEditProduct(

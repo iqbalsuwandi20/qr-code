@@ -121,7 +121,7 @@ class HomeView extends StatelessWidget {
                                   builder: (context, state) {
                                     if (state is ProductStateLoadingExport) {
                                       return const CircularProgressIndicator(
-                                        color: Colors.white,
+                                        color: Colors.blueAccent,
                                       );
                                     }
                                     return Icon(

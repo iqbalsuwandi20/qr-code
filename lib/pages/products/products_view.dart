@@ -169,6 +169,7 @@ class ProductsView extends StatelessWidget {
                                                     .width *
                                                 0.045,
                                           ),
+                                          maxLines: 1,
                                         ),
                                         SizedBox(
                                             height: MediaQuery.of(context)
