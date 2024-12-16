@@ -124,6 +124,7 @@ class DetailProductView extends StatelessWidget {
                 TextField(
                   controller: nameController,
                   autocorrect: false,
+                  readOnly: true,
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     labelText: "Product Name",
@@ -149,6 +150,7 @@ class DetailProductView extends StatelessWidget {
                 TextField(
                   controller: quantityController,
                   autocorrect: false,
+                  readOnly: true,
                   textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.number,
                   maxLength: 5,
@@ -174,67 +176,67 @@ class DetailProductView extends StatelessWidget {
                   style: GoogleFonts.poppins(color: Colors.white),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    padding: EdgeInsets.symmetric(
-                      vertical: MediaQuery.of(context).size.height * 0.02,
-                      horizontal: MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  onPressed: () {
-                    if (nameController.text.isEmpty &&
-                        quantityController.text.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Data cannot be empty')),
-                      );
-                    }
-                    if (quantityController.text.length == 5) {
-                      context.read<ProductBloc>().add(ProductEventEditProduct(
-                            productId: product.productId!,
-                            name: nameController.text,
-                            qty: int.tryParse(quantityController.text) ?? 0,
-                          ));
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text('Quantity must be 5 digits')),
-                      );
-                    }
-                  },
-                  child: BlocConsumer<ProductBloc, ProductState>(
-                    listener: (context, state) {
-                      if (state is ProductStateError) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(state.message)),
-                        );
-                      }
-                      if (state is ProductStateCompleteEdit) {
-                        context.pop();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text("Successfully updated product")),
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      return Text(
-                        state is ProductStateLoadingEdit
-                            ? 'LOADING...'
-                            : 'UPDATE',
-                        style: GoogleFonts.poppins(
-                          fontSize: MediaQuery.of(context).size.width * 0.05,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: Colors.blueAccent,
+                //     padding: EdgeInsets.symmetric(
+                //       vertical: MediaQuery.of(context).size.height * 0.02,
+                //       horizontal: MediaQuery.of(context).size.width * 0.2,
+                //     ),
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(15),
+                //     ),
+                //   ),
+                //   onPressed: () {
+                //     if (nameController.text.isEmpty &&
+                //         quantityController.text.isEmpty) {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(content: Text('Data cannot be empty')),
+                //       );
+                //     }
+                //     if (quantityController.text.length == 5) {
+                //       context.read<ProductBloc>().add(ProductEventEditProduct(
+                //             productId: product.productId!,
+                //             name: nameController.text,
+                //             qty: int.tryParse(quantityController.text) ?? 0,
+                //           ));
+                //     } else {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(
+                //             content: Text('Quantity must be 5 digits')),
+                //       );
+                //     }
+                //   },
+                //   child: BlocConsumer<ProductBloc, ProductState>(
+                //     listener: (context, state) {
+                //       if (state is ProductStateError) {
+                //         ScaffoldMessenger.of(context).showSnackBar(
+                //           SnackBar(content: Text(state.message)),
+                //         );
+                //       }
+                //       if (state is ProductStateCompleteEdit) {
+                //         context.pop();
+                //         ScaffoldMessenger.of(context).showSnackBar(
+                //           const SnackBar(
+                //               content: Text("Successfully updated product")),
+                //         );
+                //       }
+                //     },
+                //     builder: (context, state) {
+                //       return Text(
+                //         state is ProductStateLoadingEdit
+                //             ? 'LOADING...'
+                //             : 'UPDATE',
+                //         style: GoogleFonts.poppins(
+                //           fontSize: MediaQuery.of(context).size.width * 0.05,
+                //           fontWeight: FontWeight.bold,
+                //           color: Colors.white70,
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
+                // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 TextButton(
                   onPressed: () {
                     context

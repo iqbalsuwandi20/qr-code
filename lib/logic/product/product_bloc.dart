@@ -146,7 +146,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
                       pw.Padding(
                         padding: const pw.EdgeInsets.all(20),
                         child: pw.Text(
-                          'Total: ${product.qty}',
+                          '${product.qty}',
                           textAlign: pw.TextAlign.center,
                           style: const pw.TextStyle(
                             fontSize: 12,
